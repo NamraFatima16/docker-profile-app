@@ -7,7 +7,7 @@ services:
   app:
     container_name: profileapp
     image: profileapp:1.0
-    build: .      # Location of Dockerfile
+    build: ./
     ports:
       - 3000:3000
     environment:
@@ -26,6 +26,9 @@ services:
       - MONGO_INITDB_ROOT_PASSWORD=secret
     networks:
        - profile-network
+    volumes: 
+       - ./data:/db/data  
+     
 
   mongo-express:
     container_name: express
